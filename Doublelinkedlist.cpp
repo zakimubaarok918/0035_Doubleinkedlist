@@ -93,7 +93,66 @@ public:
         int rollNo;
         cin >> rollNo;
 
-        
+        Node *current = START;
+
+        // Step 1: Traverse the list to find the node
+        while (current != NULL && current->NoMhs != rollno)
+            current = current->next;
+
+        if (current == NULL)
+        {
+            START + current->next; // Step 2a: START = START.next
+            if (START != NULL)
+                START->prev = NULL; // Step 2b: START.prev = NULL
+        }
+        else
+        {
+            current->prev->next = current->next;
+
+            if(current->next != NULL)
+               current->next->prev = current->prev;
+        }    
+
+        delete current;
+        cout << "Record with roll number " << rollNO << " deleted" << endl;
     }
+
+    void traverse()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+
+        Node *currentNode = START;
+        
+        cout << "\nRecords in ascending order of roll number are:\n";
+        int i =0;
+        while (currentNode != NULL)
+        {
+            cout << i + 1 << ". " << currentNode->noMhs << " " << endl;
+
+            currentNode = currentNode->next;
+            i++;
+        }
+    }
+
+    void revtraverse()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+        Node *currentNode = currentNode->next;
+        i++;
+    }
+
+    cout << "\nRecords in descending order of roll number are:\n:";
+    while (currentNode != NULL)
+    
 
 }
